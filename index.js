@@ -5,6 +5,7 @@ const cors = require('cors')
 app.use(cors())
 app.use(express.json())
 
+
 let persons = [ {
     name: "Arto Hellas",
     number: "123553234",
@@ -30,6 +31,9 @@ let persons = [ {
     number: "123-456",
     id: 5
   }]
+
+  app.use(express.static('dist'))//Carga la web de la carpeta dist
+
 
   app.get('/', (request, response) => {
     response.send('<h1>Hello World!</h1>')
