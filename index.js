@@ -21,8 +21,6 @@ const errorHandler = (error, request, response, next) => {
   next(error)
 }
 
-let persons = []
-
 app.use(express.static('dist')) // Carga la web de la carpeta dist
 
 app.get('/', (request, response) => {
@@ -51,6 +49,7 @@ app.get('/api/persons/:id', (request, response, next) => {
 
 app.delete('/api/persons/:id', (request, response, next) => {
   Person.findByIdAndDelete(request.params.id)
+    // eslint-disable-next-line no-unused-vars
     .then(result => {
       response.status(204).end()
     })
@@ -96,6 +95,7 @@ app.put('/api/persons/:id', (request, response, next) => {
 app.use(unknownEndpoint)
 app.use(errorHandler)
 
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
